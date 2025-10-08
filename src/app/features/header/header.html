@@ -1,0 +1,13 @@
+<header
+  [class]="
+    'p-4 shadow-md transition-colors ' +
+    (theme() === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-gray-900')
+  "
+>
+  <div class="mx-auto flex max-w-4xl items-center justify-between">
+    <h2 class="text-xl font-bold">Mi Aplicación</h2>
+    <div class="text-sm">
+      👤 Hola, <span class="font-semibold">{{ username() }}</span>
+    </div>
+  </div>
+</header>

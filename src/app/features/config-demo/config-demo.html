@@ -1,0 +1,80 @@
+<div
+  class="min-h-screen p-6 transition-colors"
+  [class.bg-gray-900]="theme() === 'dark'"
+  [class.bg-gray-50]="theme() === 'light'"
+>
+  <div class="mx-auto max-w-4xl">
+    <!--Panel de control-->
+    <div
+      [class]="
+        'rounded-lg p-6 shadow-lg transition-colors' +
+        (theme() === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-gray-900')
+      "
+    >
+      <h2 class="mb-4 text-xl font-bold">Panel de configuración</h2>
+
+      <!--Theme Toggle-->
+      <div class="mb-6">
+        <label class="mb-2 block text-sm font-semibold">Tema</label>
+        <button
+          (click)="toggleTheme()"
+          [class]="
+            'w-full rounded-lg border-2 font-medium transition-colors ' +
+            (theme() === 'dark'
+              ? 'border-gray-600 bg-gray-700 hover:bg-gray-600'
+              : 'border-gray-300 bg-gray-50 hover:bg-gray-100')
+          "
+        >
+          {{ theme() === 'light' ? '☀️ Modo Claro' : '🌙 Modo Oscuro' }}
+        </button>
+      </div>
+
+      <!--Language Selector-->
+      <div class="mb-6">
+        <label class="mb-2 block text-sm font-semibold">🌎 Idioma</label>
+        <div class="grid grid-cols-3 gap-2">
+          @for (lang of ['es', 'en', 'fr']; track lang) {
+            <button
+              (click)="changeLanguage(lang)"
+              [class]="
+                'rounded-lg border border-gray-300 p-3 font-medium transition-colors ' +
+                (language() === lang
+                  ? 'bg-indigo-600 text-white'
+                  : theme() === 'dark'
+                    ? 'bg-gray-700 hover:bg-gray-600'
+                    : 'bg-gray-50 hover:bg-gray-200')
+              "
+            >
+              {{ lang.toUpperCase() }}
+            </button>
+          }
+        </div>
+      </div>
+
+      <!--Username Input-->
+      <div class="mb-6">
+        <label class="mb-2 block text-sm font-semibold">👤 Nombre de Usuario</label>
+        <input
+          type="text"
+          (input)="onUsernameChange($event)"
+          [value]="username()"
+          placeholder="Ingresa tu nombre de usuario"
+          [class]="
+            'w-full rounded-lg border-2 p-3 transition-colors ' +
+            (theme() === 'dark'
+              ? 'border-gray-600 bg-gray-700 text-white'
+              : 'border-gray-300 bg-white text-gray-900')
+          "
+        />
+      </div>
+
+      <!--Vista Previa-->
+      <div [class]="'rounded-lg p-4 ' + (theme() === 'dark' ? ' bg-gray-700' : ' bg-gray-100')">
+        <h3 class="mb-2 font-bold">Vista Previa:</h3>
+        <p class="text-lg">Tema: {{ theme() }}</p>
+        <p class="text-lg">Idioma: {{ language() }}</p>
+        <p class="text-lg">Usuario: {{ username() }}</p>
+      </div>
+    </div>
+  </div>
+</div>
