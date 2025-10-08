@@ -6,7 +6,9 @@ interface AppConfig {
   username: string;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class Config {
   // Encapsulación: Para que nadie modifique el estado interno
   private readonly config: WritableSignal<AppConfig> = signal<AppConfig>({

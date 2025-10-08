@@ -4,7 +4,6 @@ import { Header } from '../header/header';
 
 @Component({
   selector: 'app-config-demo',
-  providers: [Config],
   templateUrl: './config-demo.html',
   styleUrl: './config-demo.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -3,7 +3,6 @@ import { Config } from '../../core/services/config';
 
 @Component({
   selector: 'app-header',
-  providers: [Config],
   templateUrl: './header.html',
   styleUrl: './header.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
